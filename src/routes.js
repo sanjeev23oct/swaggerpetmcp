@@ -1,6 +1,10 @@
 
 module.exports = function(app) {
 
+  app.get('/', (req, res) => {
+    res.json({ message: "API is running" });
+  });
+
   app.put('/pet', (req, res) => {
     res.json({ message: "Stub for PUT /pet" });
   });
