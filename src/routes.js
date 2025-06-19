@@ -5,6 +5,10 @@ module.exports = function(app) {
     res.json({ message: "API is running" });
   });
 
+  app.get('/health', (req, res) => {
+    res.json({ status: "ok" });
+  });
+
   app.put('/pet', (req, res) => {
     res.json({ message: "Stub for PUT /pet" });
   });
