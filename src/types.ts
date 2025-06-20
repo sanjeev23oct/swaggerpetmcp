@@ -1,54 +1,5 @@
-/**
- * Local JSONSchema type for generated MCP server (no external import)
- */
-type JSONSchema = {
-  $schema?: string;
-  type?: string;
-  title?: string;
-  description?: string;
-  default?: any;
-  examples?: any[];
-  enum?: any[];
-  const?: any;
-  format?: string;
-  pattern?: string;
-  minLength?: number;
-  maxLength?: number;
-  minimum?: number;
-  maximum?: number;
-  exclusiveMinimum?: number;
-  exclusiveMaximum?: number;
-  multipleOf?: number;
-  items?: JSONSchema | JSONSchema[];
-  additionalItems?: JSONSchema;
-  properties?: Record<string, JSONSchema>;
-  additionalProperties?: boolean | JSONSchema;
-  patternProperties?: Record<string, JSONSchema>;
-  required?: string[];
-  minProperties?: number;
-  maxProperties?: number;
-  dependencies?: Record<string, JSONSchema | string[]>;
-  allOf?: JSONSchema[];
-  anyOf?: JSONSchema[];
-  oneOf?: JSONSchema[];
-  not?: JSONSchema;
-  if?: JSONSchema;
-  then?: JSONSchema;
-  else?: JSONSchema;
-  $ref?: string;
-  $id?: string;
-  $defs?: Record<string, JSONSchema>;
-};
-
-export interface MCPToolSchema {
-  name: string;
-  description: string;
-  inputSchema: JSONSchema;
-  outputSchema?: JSONSchema;
-  operationId?: string;
-}
-
-export const openApiTools: MCPToolSchema[] = [
+// OpenAPI Tools exported for MCP server
+export const openApiTools = [
   {
     "name": "updatePet",
     "description": "Update an existing pet.",
@@ -74,34 +25,46 @@ export const openApiTools: MCPToolSchema[] = [
         "id": {
           "type": "integer",
           "format": "int64",
-          },
+          "example": 10
+        },
         "name": {
           "type": "string",
-          },
+          "example": "doggie"
+        },
         "category": {
           "type": "object",
           "properties": {
             "id": {
               "type": "integer",
               "format": "int64",
-              },
+              "example": 1
+            },
             "name": {
               "type": "string",
-              }
+              "example": "Dogs"
+            }
           },
-          
+          "xml": {
+            "name": "category"
+          }
         },
         "photoUrls": {
           "type": "array",
-          
+          "xml": {
+            "wrapped": true
+          },
           "items": {
             "type": "string",
-            
+            "xml": {
+              "name": "photoUrl"
+            }
           }
         },
         "tags": {
           "type": "array",
-          
+          "xml": {
+            "wrapped": true
+          },
           "items": {
             "type": "object",
             "properties": {
@@ -113,7 +76,9 @@ export const openApiTools: MCPToolSchema[] = [
                 "type": "string"
               }
             },
-            
+            "xml": {
+              "name": "tag"
+            }
           }
         },
         "status": {
@@ -126,7 +91,9 @@ export const openApiTools: MCPToolSchema[] = [
           ]
         }
       },
-      
+      "xml": {
+        "name": "pet"
+      },
       "description": "Successful operation"
     },
     "operationId": "updatePet"
@@ -156,34 +123,46 @@ export const openApiTools: MCPToolSchema[] = [
         "id": {
           "type": "integer",
           "format": "int64",
-          },
+          "example": 10
+        },
         "name": {
           "type": "string",
-          },
+          "example": "doggie"
+        },
         "category": {
           "type": "object",
           "properties": {
             "id": {
               "type": "integer",
               "format": "int64",
-              },
+              "example": 1
+            },
             "name": {
               "type": "string",
-              }
+              "example": "Dogs"
+            }
           },
-          
+          "xml": {
+            "name": "category"
+          }
         },
         "photoUrls": {
           "type": "array",
-          
+          "xml": {
+            "wrapped": true
+          },
           "items": {
             "type": "string",
-            
+            "xml": {
+              "name": "photoUrl"
+            }
           }
         },
         "tags": {
           "type": "array",
-          
+          "xml": {
+            "wrapped": true
+          },
           "items": {
             "type": "object",
             "properties": {
@@ -195,7 +174,9 @@ export const openApiTools: MCPToolSchema[] = [
                 "type": "string"
               }
             },
-            
+            "xml": {
+              "name": "tag"
+            }
           }
         },
         "status": {
@@ -208,7 +189,9 @@ export const openApiTools: MCPToolSchema[] = [
           ]
         }
       },
-      
+      "xml": {
+        "name": "pet"
+      },
       "description": "Successful operation"
     },
     "operationId": "addPet"
@@ -250,34 +233,46 @@ export const openApiTools: MCPToolSchema[] = [
           "id": {
             "type": "integer",
             "format": "int64",
-            },
+            "example": 10
+          },
           "name": {
             "type": "string",
-            },
+            "example": "doggie"
+          },
           "category": {
             "type": "object",
             "properties": {
               "id": {
                 "type": "integer",
                 "format": "int64",
-                },
+                "example": 1
+              },
               "name": {
                 "type": "string",
-                }
+                "example": "Dogs"
+              }
             },
-            
+            "xml": {
+              "name": "category"
+            }
           },
           "photoUrls": {
             "type": "array",
-            
+            "xml": {
+              "wrapped": true
+            },
             "items": {
               "type": "string",
-              
+              "xml": {
+                "name": "photoUrl"
+              }
             }
           },
           "tags": {
             "type": "array",
-            
+            "xml": {
+              "wrapped": true
+            },
             "items": {
               "type": "object",
               "properties": {
@@ -289,7 +284,9 @@ export const openApiTools: MCPToolSchema[] = [
                   "type": "string"
                 }
               },
-              
+              "xml": {
+                "name": "tag"
+              }
             }
           },
           "status": {
@@ -302,7 +299,9 @@ export const openApiTools: MCPToolSchema[] = [
             ]
           }
         },
-        
+        "xml": {
+          "name": "pet"
+        }
       },
       "description": "successful operation"
     },
@@ -342,34 +341,46 @@ export const openApiTools: MCPToolSchema[] = [
           "id": {
             "type": "integer",
             "format": "int64",
-            },
+            "example": 10
+          },
           "name": {
             "type": "string",
-            },
+            "example": "doggie"
+          },
           "category": {
             "type": "object",
             "properties": {
               "id": {
                 "type": "integer",
                 "format": "int64",
-                },
+                "example": 1
+              },
               "name": {
                 "type": "string",
-                }
+                "example": "Dogs"
+              }
             },
-            
+            "xml": {
+              "name": "category"
+            }
           },
           "photoUrls": {
             "type": "array",
-            
+            "xml": {
+              "wrapped": true
+            },
             "items": {
               "type": "string",
-              
+              "xml": {
+                "name": "photoUrl"
+              }
             }
           },
           "tags": {
             "type": "array",
-            
+            "xml": {
+              "wrapped": true
+            },
             "items": {
               "type": "object",
               "properties": {
@@ -381,7 +392,9 @@ export const openApiTools: MCPToolSchema[] = [
                   "type": "string"
                 }
               },
-              
+              "xml": {
+                "name": "tag"
+              }
             }
           },
           "status": {
@@ -394,7 +407,9 @@ export const openApiTools: MCPToolSchema[] = [
             ]
           }
         },
-        
+        "xml": {
+          "name": "pet"
+        }
       },
       "description": "successful operation"
     },
@@ -427,34 +442,46 @@ export const openApiTools: MCPToolSchema[] = [
         "id": {
           "type": "integer",
           "format": "int64",
-          },
+          "example": 10
+        },
         "name": {
           "type": "string",
-          },
+          "example": "doggie"
+        },
         "category": {
           "type": "object",
           "properties": {
             "id": {
               "type": "integer",
               "format": "int64",
-              },
+              "example": 1
+            },
             "name": {
               "type": "string",
-              }
+              "example": "Dogs"
+            }
           },
-          
+          "xml": {
+            "name": "category"
+          }
         },
         "photoUrls": {
           "type": "array",
-          
+          "xml": {
+            "wrapped": true
+          },
           "items": {
             "type": "string",
-            
+            "xml": {
+              "name": "photoUrl"
+            }
           }
         },
         "tags": {
           "type": "array",
-          
+          "xml": {
+            "wrapped": true
+          },
           "items": {
             "type": "object",
             "properties": {
@@ -466,7 +493,9 @@ export const openApiTools: MCPToolSchema[] = [
                 "type": "string"
               }
             },
-            
+            "xml": {
+              "name": "tag"
+            }
           }
         },
         "status": {
@@ -479,7 +508,9 @@ export const openApiTools: MCPToolSchema[] = [
           ]
         }
       },
-      
+      "xml": {
+        "name": "pet"
+      },
       "description": "successful operation"
     },
     "operationId": "getPetById"
@@ -525,34 +556,46 @@ export const openApiTools: MCPToolSchema[] = [
         "id": {
           "type": "integer",
           "format": "int64",
-          },
+          "example": 10
+        },
         "name": {
           "type": "string",
-          },
+          "example": "doggie"
+        },
         "category": {
           "type": "object",
           "properties": {
             "id": {
               "type": "integer",
               "format": "int64",
-              },
+              "example": 1
+            },
             "name": {
               "type": "string",
-              }
+              "example": "Dogs"
+            }
           },
-          
+          "xml": {
+            "name": "category"
+          }
         },
         "photoUrls": {
           "type": "array",
-          
+          "xml": {
+            "wrapped": true
+          },
           "items": {
             "type": "string",
-            
+            "xml": {
+              "name": "photoUrl"
+            }
           }
         },
         "tags": {
           "type": "array",
-          
+          "xml": {
+            "wrapped": true
+          },
           "items": {
             "type": "object",
             "properties": {
@@ -564,7 +607,9 @@ export const openApiTools: MCPToolSchema[] = [
                 "type": "string"
               }
             },
-            
+            "xml": {
+              "name": "tag"
+            }
           }
         },
         "status": {
@@ -577,7 +622,9 @@ export const openApiTools: MCPToolSchema[] = [
           ]
         }
       },
-      
+      "xml": {
+        "name": "pet"
+      },
       "description": "successful operation"
     },
     "operationId": "updatePetWithForm"
@@ -659,7 +706,9 @@ export const openApiTools: MCPToolSchema[] = [
           "type": "string"
         }
       },
-      
+      "xml": {
+        "name": "##default"
+      },
       "description": "successful operation"
     },
     "operationId": "uploadFile"
@@ -700,15 +749,18 @@ export const openApiTools: MCPToolSchema[] = [
         "id": {
           "type": "integer",
           "format": "int64",
-          },
+          "example": 10
+        },
         "petId": {
           "type": "integer",
           "format": "int64",
-          },
+          "example": 198772
+        },
         "quantity": {
           "type": "integer",
           "format": "int32",
-          },
+          "example": 7
+        },
         "shipDate": {
           "type": "string",
           "format": "date-time"
@@ -716,7 +768,7 @@ export const openApiTools: MCPToolSchema[] = [
         "status": {
           "type": "string",
           "description": "Order Status",
-          
+          "example": "approved",
           "enum": [
             "placed",
             "approved",
@@ -727,7 +779,9 @@ export const openApiTools: MCPToolSchema[] = [
           "type": "boolean"
         }
       },
-      
+      "xml": {
+        "name": "order"
+      },
       "description": "successful operation"
     },
     "operationId": "placeOrder"
@@ -755,15 +809,18 @@ export const openApiTools: MCPToolSchema[] = [
         "id": {
           "type": "integer",
           "format": "int64",
-          },
+          "example": 10
+        },
         "petId": {
           "type": "integer",
           "format": "int64",
-          },
+          "example": 198772
+        },
         "quantity": {
           "type": "integer",
           "format": "int32",
-          },
+          "example": 7
+        },
         "shipDate": {
           "type": "string",
           "format": "date-time"
@@ -771,7 +828,7 @@ export const openApiTools: MCPToolSchema[] = [
         "status": {
           "type": "string",
           "description": "Order Status",
-          
+          "example": "approved",
           "enum": [
             "placed",
             "approved",
@@ -782,7 +839,9 @@ export const openApiTools: MCPToolSchema[] = [
           "type": "boolean"
         }
       },
-      
+      "xml": {
+        "name": "order"
+      },
       "description": "successful operation"
     },
     "operationId": "getOrderById"
@@ -828,32 +887,42 @@ export const openApiTools: MCPToolSchema[] = [
         "id": {
           "type": "integer",
           "format": "int64",
-          },
+          "example": 10
+        },
         "username": {
           "type": "string",
-          },
+          "example": "theUser"
+        },
         "firstName": {
           "type": "string",
-          },
+          "example": "John"
+        },
         "lastName": {
           "type": "string",
-          },
+          "example": "James"
+        },
         "email": {
           "type": "string",
-          },
+          "example": "john@email.com"
+        },
         "password": {
           "type": "string",
-          },
+          "example": "12345"
+        },
         "phone": {
           "type": "string",
-          },
+          "example": "12345"
+        },
         "userStatus": {
           "type": "integer",
           "description": "User Status",
           "format": "int32",
-          }
+          "example": 1
+        }
       },
-      
+      "xml": {
+        "name": "user"
+      },
       "description": "successful operation"
     },
     "operationId": "createUser"
@@ -876,32 +945,42 @@ export const openApiTools: MCPToolSchema[] = [
         "id": {
           "type": "integer",
           "format": "int64",
-          },
+          "example": 10
+        },
         "username": {
           "type": "string",
-          },
+          "example": "theUser"
+        },
         "firstName": {
           "type": "string",
-          },
+          "example": "John"
+        },
         "lastName": {
           "type": "string",
-          },
+          "example": "James"
+        },
         "email": {
           "type": "string",
-          },
+          "example": "john@email.com"
+        },
         "password": {
           "type": "string",
-          },
+          "example": "12345"
+        },
         "phone": {
           "type": "string",
-          },
+          "example": "12345"
+        },
         "userStatus": {
           "type": "integer",
           "description": "User Status",
           "format": "int32",
-          }
+          "example": 1
+        }
       },
-      
+      "xml": {
+        "name": "user"
+      },
       "description": "Successful operation"
     },
     "operationId": "createUsersWithListInput"
@@ -971,32 +1050,42 @@ export const openApiTools: MCPToolSchema[] = [
         "id": {
           "type": "integer",
           "format": "int64",
-          },
+          "example": 10
+        },
         "username": {
           "type": "string",
-          },
+          "example": "theUser"
+        },
         "firstName": {
           "type": "string",
-          },
+          "example": "John"
+        },
         "lastName": {
           "type": "string",
-          },
+          "example": "James"
+        },
         "email": {
           "type": "string",
-          },
+          "example": "john@email.com"
+        },
         "password": {
           "type": "string",
-          },
+          "example": "12345"
+        },
         "phone": {
           "type": "string",
-          },
+          "example": "12345"
+        },
         "userStatus": {
           "type": "integer",
           "description": "User Status",
           "format": "int32",
-          }
+          "example": 1
+        }
       },
-      
+      "xml": {
+        "name": "user"
+      },
       "description": "successful operation"
     },
     "operationId": "getUserByName"
@@ -1049,3 +1138,16 @@ export const openApiTools: MCPToolSchema[] = [
     "operationId": "deleteUser"
   }
 ];
+
+// Utility function to strip invalid properties
+function stripInvalidProps(obj: any): any {
+  if (typeof obj !== 'object' || obj === null) return obj;
+  if (Array.isArray(obj)) return obj.map(stripInvalidProps);
+  const valid: any = {};
+  for (const key in obj) {
+    if (obj[key] !== undefined) valid[key] = stripInvalidProps(obj[key]);
+  }
+  return valid;
+}
+
+export { stripInvalidProps };
