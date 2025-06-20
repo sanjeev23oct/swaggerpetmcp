@@ -48,4 +48,8 @@ app.use('/tools', apiRoutes);
 // ... (rest of the reference server.ts content, see previous read_file result)
 // For brevity, you may want to copy the full content from the reference server.ts
 
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
+
 export default app;
