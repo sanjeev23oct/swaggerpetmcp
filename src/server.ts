@@ -2141,10 +2141,12 @@ async function executedeleteuser(args: any): Promise<any> {
 // Check if running in stdio mode (for MCP clients like Cline)
 // Multiple detection methods for better reliability
 const isStdioMode = (
-  process.stdin.isTTY === false ||  // Standard detection
-  process.argv.includes('--stdio') ||  // Explicit flag
-  process.env.MCP_STDIO_MODE === 'true' ||  // Environment variable
-  !process.stdout.isTTY  // Output is being piped
+  (process.env.NODE_ENV !== 'production' && process.env.RAILWAY_ENVIRONMENT !== 'production') && (
+    process.stdin.isTTY === false ||
+    process.argv.includes('--stdio') ||
+    process.env.MCP_STDIO_MODE === 'true' ||
+    !process.stdout.isTTY
+  )
 );
 
 if (isStdioMode) {
